@@ -2,6 +2,8 @@
 /*http://www.db-class.org/course/quiz/attempt?quiz_id=55*/
 /*http://www.db-class.org/course/resources/index?page=ra*/
 
+/*###########################################################################*/
+/*Q1*/
 /*Find all pizzas eaten by at least one female over the age of 20*/
 \project_{pizza} (
   \select_{age>20 and gender='female'} Person
@@ -9,7 +11,7 @@
 )
 
 /*###########################################################################*/
-
+/*Q2*/
 /*Find the names of all females who eat at least one pizza served by Straw Hat.*/
 
 /* Everyone who eats at Straw Hat, join SERVES & EATS */
@@ -21,4 +23,18 @@
 \project_{name}(
 \select_{pizzeria='Straw Hat'} SERVES
 \join EATS)))
+
+/*###########################################################################*/
+/*Q3*/
+/*Find all pizzerias that serve at least one pizza for less than $10 that either*/
+/*Amy or Fay (or both) eat*/
+
+
+/*Join serves to eats*/
+\project_{pizzeria}(
+\select_{name, price<10}
+\project_{name, price}(
+\select_{name='Amy' or name='Fay'} EATS
+\join SERVES))
+
 
