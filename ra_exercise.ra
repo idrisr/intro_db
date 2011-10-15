@@ -2,6 +2,20 @@
 /*http://www.db-class.org/course/quiz/attempt?quiz_id=55*/
 /*http://www.db-class.org/course/resources/index?page=ra*/
 
+
+/*###########################################################################*/
+Person:
+name, age, gender
+
+Frequents:
+name, pizzeria
+
+Eats:
+name, pizza
+
+Serves:
+pizzeria, pizza, price
+
 /*###########################################################################*/
 /*Q1*/
 /*Find all pizzas eaten by at least one female over the age of 20*/
@@ -63,10 +77,35 @@ Amy and Fay eat*/
 /*Find the names of all people who eat at least one pizza served by Dominos
 /*but do not frequent Dominos*/
 
-(But not at Dominos)
-    (People who eat those same kind of pizzas)
-        (Pizzas served by Dominos)
-\project_{name
-    \project_{name, pizzeria} EATS \join (
-        \project_{pizza} \select_{pizzeria='Dominos'} SERVES
-    )
+
+(People who don't frequent Dominos)
+INTERSECT
+(People who eat those same kind of pizzas)
+    (Pizzas served by Dominos)
+
+
+
+\project_{name} \select_{pizzeria<>'Dominos'} FREQUENTS
+\diff(
+\project_{name} (EATS \join
+     (\project_{pizza} \select_{pizzeria='Dominos'} SERVES))
+)
+
+no.dom,pizz.dmo
+Amy   , Amy 
+Ben   , Ben
+Cal   , 
+Dan   , Dan
+Eli   , Eli
+Fay   , Fay -- Fay goes to Dominos
+Gus   , Gus -- 
+Hil   , Hil
+Ian         -- Ian goes to Dominos
+
+Call this guy at Abobe
+Jimi Shanahan
+415-630-0890
+
+PML?
+Adapa
+@Zementis
