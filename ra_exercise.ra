@@ -57,3 +57,16 @@ Amy and Fay eat*/
 \select_{price<10} SERVES
 \join EATS)
 )))
+
+/*###########################################################################*/
+/*Q5*/
+/*Find the names of all people who eat at least one pizza served by Dominos
+/*but do not frequent Dominos*/
+
+(But not at Dominos)
+    (People who eat those same kind of pizzas)
+        (Pizzas served by Dominos)
+\project_{name
+    \project_{name, pizzeria} EATS \join (
+        \project_{pizza} \select_{pizzeria='Dominos'} SERVES
+    )
