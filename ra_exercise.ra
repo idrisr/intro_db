@@ -29,12 +29,10 @@
 /*Find all pizzerias that serve at least one pizza for less than $10 that either*/
 /*Amy or Fay (or both) eat*/
 
-
-/*Join serves to eats*/
 \project_{pizzeria}(
-\select_{name, price<10}
-\project_{name, price}(
+\select_{price<10}(
+\project_{name, price, pizzeria}(
 \select_{name='Amy' or name='Fay'} EATS
-\join SERVES))
+\join SERVES)))
 
 
