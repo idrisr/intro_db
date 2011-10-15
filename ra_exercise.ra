@@ -35,4 +35,25 @@
 \select_{name='Amy' or name='Fay'} EATS
 \join SERVES)))
 
+/*###########################################################################*/
+/*Q4*/
+/*Find all pizzerias that serve at least one pizza for less than $10 that both
+Amy and Fay eat*/
 
+/*I thought this would just mean changing the above or to and... but nope.*/
+
+\project_{pizzeria}(
+\select_{name='Amy'}
+(
+\project_{name, price, pizzeria}(
+\select_{price<10} SERVES
+\join EATS)
+))
+\intersect(
+\project_{pizzeria}(
+\select_{name='Fay'}
+(
+\project_{name, price, pizzeria}(
+\select_{price<10} SERVES
+\join EATS)
+)))
