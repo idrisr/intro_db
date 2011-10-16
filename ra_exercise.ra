@@ -156,3 +156,9 @@ FROM values v1 JOIN values v2 ON v2.number > v1.number
         \project_{age} (\select_{pizza='mushroom'} EATS \join PERSON)
     )
 ))))
+
+/*###########################################################################*/
+/*Q8 Find all pizzerias that serve only pizzas eaten by people over 30*/
+
+
+
