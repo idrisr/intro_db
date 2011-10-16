@@ -2,7 +2,6 @@
 /*http://www.db-class.org/course/quiz/attempt?quiz_id=55*/
 /*http://www.db-class.org/course/resources/index?page=ra*/
 
-
 /*###########################################################################*/
 Person:
 name, age, gender
@@ -112,3 +111,19 @@ Jimi Shanahan
 PML?
 Adapa
 @Zementis
+/*###########################################################################*/
+/*Q6
+Find all pizzas that are eaten exclusively by people younger than 24, or that 
+cost less than $10 everywhere they're served*/
+This one is screaming union
+
+/*All pizzas minus pizzas that have at least one eater over 23*/
+\project_{pizza} SERVES
+\diff(
+\project_{pizza} (\select_{age>=24} PERSON \join EATS)))
+\union(
+/*All pizzas minus those that cost more than $10 anywhere*/
+\project_{pizza} SERVES
+\diff(
+\project_{pizza} (\select_{price>10} SERVES)))
+
