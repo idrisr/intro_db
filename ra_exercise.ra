@@ -77,23 +77,22 @@ Amy and Fay eat*/
 /*Find the names of all people who eat at least one pizza served by Dominos
 /*but do not frequent Dominos*/
 
+#current plan
 
-(People who don't frequent Dominos)
-INTERSECT
-(People who eat those same kind of pizzas)
-    (Pizzas served by Dominos)
+/*((all people) - 
+(all people who go to dominos))
+intersect
+(those people who eat a pizza by dominos)
+*/
 
-
-
-\project_{name} \select_{pizzeria<>'Dominos'} FREQUENTS
-\diff(
+\project_{name} PERSON
+\diff
+\project_{name} \select_{pizzeria='Dominos'} FREQUENTS
+\intersect(
 \project_{name} (EATS \join
-j    (\project_{pizza} \select_{pizzeria='Dominos'} SERVES))
+    (\project_{pizza} \select_{pizzeria='Dominos'} SERVES))
 )
 
-##### might have to use a cross product 
-\project){name, pizza}(
-SERVES \cross FREQUENTS)
 
 no.dom,pizz.dmo
 Amy   , Amy 
