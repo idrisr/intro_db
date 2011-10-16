@@ -141,3 +141,14 @@ FROM values v1
 MINUS
 SELECT v1.number
 FROM values v1 JOIN values v2 ON v2.number > v1.number
+
+/*Age Cross Product*/
+
+/*Oldest Person */
+\project_{age} PERSON
+\diff(
+\project_{age1}(
+\select_{age1 < age2}(
+\rename_{age1} (\project_{age} PERSON) \cross \rename_{age2} (\project_{age} PERSON)
+))
+)
