@@ -127,3 +127,17 @@ This one is screaming union
 \diff(
 \project_{pizza} (\select_{price>10} SERVES)))
 
+/*###########################################################################*/
+/*Q7
+Find the age of the oldest person (or people) who eats mushroom pizza*/
+
+\project_{name, age} \select{pizza='mushroom'} EATS \join PERSON
+
+\project_{age} PERSON \join 
+
+/*Here's the method. Use self-joins via rename
+SELECT v1.number
+FROM values v1
+MINUS
+SELECT v1.number
+FROM values v1 JOIN values v2 ON v2.number > v1.number
