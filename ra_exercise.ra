@@ -88,8 +88,12 @@ INTERSECT
 \project_{name} \select_{pizzeria<>'Dominos'} FREQUENTS
 \diff(
 \project_{name} (EATS \join
-     (\project_{pizza} \select_{pizzeria='Dominos'} SERVES))
+j    (\project_{pizza} \select_{pizzeria='Dominos'} SERVES))
 )
+
+##### might have to use a cross product 
+\project){name, pizza}(
+SERVES \cross FREQUENTS)
 
 no.dom,pizz.dmo
 Amy   , Amy 
