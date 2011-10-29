@@ -12,12 +12,12 @@ rID,
 mID,
 5, 
 NULL
-from movie
-where mID not in 
-    (--movies reviewed by James Cameron
-    select mov.mID
-    from Rating rat
-    join Reviewer rev on rat.rID = rev.rID
-    join movie mov on rat.mID = mov.mID
-    and rev.name = 'James Cameron')
-;
+from movie;
+--where mID not in 
+    --(--movies reviewed by James Cameron
+    --select mov.mID
+    --from Rating rat
+    --join Reviewer rev on rat.rID = rev.rID
+    --join movie mov on rat.mID = mov.mID
+    --and rev.name = 'James Cameron')
+--;
