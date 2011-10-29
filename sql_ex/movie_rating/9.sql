@@ -8,26 +8,26 @@
 --There is probably a better way using the case statement
 
 select before - after 
-    from (
-        select distinct(
-            select avg(after.Average) 
-            from (
-                select avg(r.stars) as Average
-                from movie m
-                join rating r
-                on r.mID = m.mID
-                and m.year > 1980
-                group by m.title) after) 
-            as after,
+from (
+    select distinct(
+        select avg(after.Average) 
+        from (
+            select avg(r.stars) as Average
+            from movie m
+            join rating r
+            on r.mID = m.mID
+            and m.year > 1980
+            group by m.title) after) 
+        as after,
 
-            (select avg(before.Average) 
-            from (
-                select avg(r.stars) as Average
-                from movie m
-                join rating r
-                on r.mID = m.mID
-                and m.year < 1980
-                group by m.title) before)
-            as before
-from movie) 
+        (select avg(before.Average) 
+        from (
+            select avg(r.stars) as Average
+            from movie m
+            join rating r
+            on r.mID = m.mID
+            and m.year < 1980
+            group by m.title) before)
+        as before
+    from movie) 
 bloat;
