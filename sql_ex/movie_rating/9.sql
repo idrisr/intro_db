@@ -5,7 +5,9 @@
 --after. Don't just calculate the overall average rating before 
 --and after 1980.) 
 
---There is probably a better way using the case statement
+
+
+--add a line, test
 
 select before - after 
 from (
